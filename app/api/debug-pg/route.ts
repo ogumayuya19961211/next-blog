@@ -1,11 +1,12 @@
 export async function GET() {
   try {
-    const resolved = require.resolve('pg');
-    const fs = require('fs');
-    const path = require('path');
-    const dir = path.dirname(resolved);
-    const files = fs.readdirSync(dir);
-    return Response.json({ ok: true, resolved, dir, files });
+    const pg = require('pg');
+    return Response.json({
+      ok: true,
+      hasClient: typeof pg.Client,
+      hasPool: typeof pg.Pool,
+      keys: Object.keys(pg).slice(0, 20),
+    });
   } catch (e: any) {
     return Response.json(
       { ok: false, message: e?.message, code: e?.code, stack: e?.stack },
