@@ -10,8 +10,8 @@ interface Props{
     state: {error:string} | null, 
     formData: FormData
   ) => Promise<{error:string} | null>;
-  initialTitle: string;
-  initialContent: string;
+  initialTitle?: string;
+  initialContent?: string;
 }
 
 export default function PostForm({action, initialTitle = '',initialContent = ''}: Props) {
