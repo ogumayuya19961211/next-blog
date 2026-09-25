@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { Post } from "@/entities/post";
 import { User } from "@/entities/user";
 import { DataSource } from "typeorm";
+import pg from "pg";
 
 const globalForTypeoram = global as unknown as {
     dataSource: DataSource | undefined;    
@@ -11,6 +12,8 @@ export const AppDataSource =
   globalForTypeoram.dataSource ??
   new DataSource({
     type: 'postgres',
+    // TypeORM内部の動的require("pg")がVercel上で失敗するため、pgを明示的に渡す
+    driver: pg,
     url:process.env.DATABASE_URL,    
     synchronize: true,
     logging:false,
