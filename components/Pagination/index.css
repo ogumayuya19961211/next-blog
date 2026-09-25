@@ -1,0 +1,76 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem 0;
+}
+
+.page-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-white);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.page-button:hover {
+  background: var(--color-bg-subtle);
+  border-color: var(--color-border);
+  transform: translateY(-1px);
+}
+
+.page-button:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* アクティブページ */
+.page-button-active {
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  border-color: var(--color-bg-dark);
+}
+
+.page-button-active:hover {
+  background: var(--color-bg-dark);
+  opacity: 0.9;
+}
+
+/* Prev / Next ボタン */
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-white);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+}
+
+.nav-button-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

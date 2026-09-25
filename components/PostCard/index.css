@@ -1,0 +1,112 @@
+/* === カード全体 === */
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-white);
+  text-decoration: none;
+  display: block;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* === サムネイルエリア === */
+.thumbnail {
+  height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover .thumbnail::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* === タグバッジ === */
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* === カードボディ === */
+.body {
+  padding: 1.25rem;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-xs);
+  font-weight: 300;
+  color: var(--color-text-tertiary);
+  margin-bottom: 0.75rem;
+}
+
+.meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+.excerpt {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+/* Read more リンク（矢印がスライドするアニメーション） */
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-primary);
+  transition: gap 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .read-more {
+  gap: 0.75rem;
+}
+
+.read-more-arrow {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  font-size: var(--text-base);
+}
+
+.card:hover .read-more-arrow {
+  transform: translateX(4px);
+}

@@ -1,0 +1,165 @@
+.page:has(.form-card) {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--color-bg);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-text);
+  animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.logo-accent {
+  color: var(--color-primary);
+}
+
+/* フォームカード */
+.form-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* エラーメッセージ */
+.error-message {
+  font-size: var(--text-sm);
+  color: var(--color-danger);
+  background: var(--color-danger-pale);
+  border: 1px solid var(--color-danger);
+  border-radius: var(--radius-sm);
+  padding: 0.625rem 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+/* 入力フィールド */
+.input-group {
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.375rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-base);
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--color-bg-white);
+  color: var(--color-text);
+  outline: none;
+  box-sizing: border-box;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-pale);
+}
+
+/* 送信ボタン */
+.submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-base);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.submit-button:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.submit-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ローディング状態 */
+.submit-button-loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.submit-button-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* フッターリンク */
+.form-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.form-footer-link {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.form-footer-link:hover {
+  color: var(--color-primary-hover);
+}
+
+/* レスポンシブ */
+@media (max-width: 480px) {
+  .form-card {
+    padding: 1.5rem;
+  }
+}

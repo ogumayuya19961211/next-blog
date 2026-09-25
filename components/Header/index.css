@@ -1,0 +1,208 @@
+/* スクロール量に応じて影を付与（CSS Scroll-Driven Animations） */
+@keyframes header-shadow {
+  to {
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(250, 249, 247, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  animation: header-shadow linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0px 1px;
+}
+
+/* ロゴ */
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.logoAccent {
+  color: var(--color-primary);
+}
+
+/* ナビゲーション */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navLink {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+/* ホバーアニメーション：下線がスライドイン */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 1px;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navLink:hover {
+  color: var(--color-text);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Sign up ボタン */
+.signInButton {
+  background: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.signInButton:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.signInButton:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ============================================ */
+/*  ユーザーメニュー（ログイン時）                  */
+/* ============================================ */
+
+.userMenu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* アバター: 名前の頭文字 */
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  font-family: 'Noto Sans JP', sans-serif;
+  flex-shrink: 0;
+}
+
+/* ドロップダウン */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  min-width: 160px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.userMenu:hover .dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* アバターとドロップダウンの隙間をホバー可能な橋渡しで埋める */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -0.75rem;
+  left: 0;
+  right: 0;
+  height: 0.75rem;
+}
+
+.dropdownName {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: 0.25rem;
+}
+
+.signOutButton {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.signOutButton:hover {
+  background: var(--color-danger-pale);
+  color: var(--color-danger);
+}
+
+/* ============================================ */
+/*  レスポンシブ                                   */
+/* ============================================ */
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 1rem;
+  }
+}

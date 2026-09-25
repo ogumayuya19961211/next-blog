@@ -1,40 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+
+/* ============================================ */
+/*  CSS変数                                      */
+/* ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* フォントサイズスケール */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.5rem;     /* 24px */
+  --text-2xl: 2rem;      /* 32px */
+  --text-3xl: 2.5rem;    /* 40px */
+
+  /* プライマリ（テラコッタオレンジ） */
+  --color-primary: #c05621;
+  --color-primary-light: #ed8936;
+  --color-primary-pale: #fef3e2;
+  --color-primary-hover: #a84b1c;
+
+  /* ニュートラル */
+  --color-bg: #faf9f7;
+  --color-bg-white: #ffffff;
+  --color-bg-elevated: #ffffff;
+  --color-bg-subtle: #f5f3f0;
+  --color-bg-dark: #1a1a1a;
+
+  /* テキスト */
+  --color-text: #1a1a1a;
+  --color-text-secondary: #6b6b6b;
+  --color-text-tertiary: #9a9a9a;
+  --color-text-inverse: #ffffff;
+
+  /* ボーダー */
+  --color-border: #e8e5e0;
+  --color-border-light: #f0ede8;
+
+  /* セマンティック */
+  --color-success: #2d8a4e;
+  --color-success-pale: #e6f5ec;
+  --color-danger: #c53030;
+  --color-danger-pale: #fde8e8;
+  --color-warning: #c4841d;
+  --color-warning-pale: #fef3cd;
+
+  /* レイアウト */
+  --max-width: 1080px;
+  --content-width: 720px;
+  --header-height: 72px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================ */
+/*  CSSリセット                                   */
+/* ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   height: 100%;
 }
 
-html,
-body {
+html, body {
   max-width: 100vw;
   overflow-x: hidden;
 }
 
 body {
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 a {
@@ -42,8 +90,82 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============================================ */
+/*  グローバルアニメーション定義                   */
+/* ============================================ */
+
+/* フェードイン + 上にスライド（汎用） */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* フェードイン（シンプル） */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* スケールイン（モーダル・ドロップダウン用） */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* スピナー */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* スライドダウン（ドロップダウン・トーストなど） */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* パルス */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+/* シマー（スケルトンローディング用） */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ============================================ */
+/*  アクセシビリティ                               */
+/* ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

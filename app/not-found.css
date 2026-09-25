@@ -1,0 +1,54 @@
+.not-found {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+  text-align: center;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.error-code {
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-border);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.message {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.back-link:hover {
+  color: var(--color-text);
+  gap: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  .error-code {
+    font-size: 6rem;
+  }
+
+  .title {
+    font-size: var(--text-xl);
+  }
+}

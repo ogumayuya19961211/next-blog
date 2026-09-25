@@ -1,0 +1,69 @@
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-subtle) 25%,
+    var(--color-border)    50%,
+    var(--color-bg-subtle) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+.article-skeleton {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.tag-sk {
+  width: 80px;
+  height: 1.25rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+}
+
+.title-sk {
+  width: 80%;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.meta-sk {
+  width: 220px;
+  height: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ディバイダーはシマーなし */
+.divider-sk {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+  margin-bottom: 2.5rem;
+}
+
+.lines-sk {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.line-sk      { height: 0.875rem; }
+.line-full    { width: 100%; }
+.line-ninety  { width: 90%; }
+.line-eighty  { width: 80%; }
+.line-seventy { width: 70%; }
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .title-sk {
+    width: 100%;
+    height: 2rem;
+  }
+}
